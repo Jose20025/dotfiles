@@ -1,5 +1,5 @@
 # amro.omp.json | pure.omp.json
-$omp_config = Join-Path $PSScriptRoot ".\omp-themes\amro.omp.json"
+$omp_config = ".\omp-themes\amro.omp.json"
 
 # Initialize oh-my-posh
 oh-my-posh init pwsh --config $omp_config | Invoke-Expression

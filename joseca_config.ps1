@@ -1,11 +1,14 @@
+# Asegura que las rutas sean relativas a este archivo
+$script:Root = $PSScriptRoot  # por claridad
+
 # amro.omp.json | pure.omp.json
-$omp_config = ".\omp-themes\amro.omp.json"
+$omp_config = Join-Path $script:Root 'omp-themes\amro.omp.json'
 
 # Initialize oh-my-posh
 oh-my-posh init pwsh --config $omp_config | Invoke-Expression
 
 # Import Terminal-Icons module
-Import-Module -Name Terminal-Icons
+Import-Module -Name Terminal-Icons -ErrorAction SilentlyContinue
 
 function GoDevFunc {
     Set-Location -Path "D:\dev"    

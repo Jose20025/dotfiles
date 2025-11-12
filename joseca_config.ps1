@@ -1,8 +1,8 @@
 # Asegura que las rutas sean relativas a este archivo
-$script:Root = $PSScriptRoot  # por claridad
+$script:Root = $PSScriptRoot 
 
 # amro.omp.json | pure.omp.json
-$omp_config = Join-Path $script:Root 'omp-themes\amro.omp.json'
+$omp_config = Join-Path $script:Root 'omp-themes\catppuccin_mocha.omp.json'
 
 # Initialize oh-my-posh
 oh-my-posh init pwsh --config $omp_config | Invoke-Expression

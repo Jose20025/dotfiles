@@ -16,6 +16,12 @@ function GoDevFunc {
 
 Set-Alias -Name godev -Value GoDevFunc
 
+function GoWorkFunc {
+    Set-Location -Path "D:/work"    
+}
+
+Set-Alias -Name gokais -Value GoWorkFunc
+
 function GoKaisFunc {
     Set-Location -Path "D:/work/kais"    
 }

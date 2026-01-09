@@ -20,7 +20,7 @@ function GoWorkFunc {
     Set-Location -Path "D:/work"    
 }
 
-Set-Alias -Name gokais -Value GoWorkFunc
+Set-Alias -Name gowork -Value GoWorkFunc
 
 function GoKaisFunc {
     Set-Location -Path "D:/work/kais"    

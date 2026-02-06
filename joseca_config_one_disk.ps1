@@ -10,14 +10,14 @@ oh-my-posh init pwsh --config $omp_config | Invoke-Expression
 # Import Terminal-Icons module
 Import-Module -Name Terminal-Icons -ErrorAction SilentlyContinue
 
-function GoDevFunc {
-    Set-Location -Path "C:\dev"    
+function GoCodeFunc {
+    Set-Location -Path (Join-Path $HOME "Desktop/code")
 }
 
-Set-Alias -Name godev -Value GoDevFunc
+Set-Alias -Name gocode -Value GoCodeFunc
 
-function GoWorkFunc {
-    Set-Location -Path "C:/work"    
+function GoKaisFunc {
+    Set-Location -Path (Join-Path $HOME "Desktop/code/kais")
 }
 
-Set-Alias -Name gowork -Value GoWorkFunc
+Set-Alias -Name gokais -Value GoKaisFunc

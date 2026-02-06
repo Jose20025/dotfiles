@@ -1,23 +1,25 @@
-# Asegura que las rutas sean relativas a este archivo
+# --- Configuración Estética ---
 $script:Root = $PSScriptRoot 
-
-# amro.omp.json | pure.omp.json
 $omp_config = Join-Path $script:Root 'omp-themes\catppuccin_mocha.omp.json'
 
-# Initialize oh-my-posh
-oh-my-posh init pwsh --config $omp_config | Invoke-Expression
-
-# Import Terminal-Icons module
+# Oh My Posh y Terminal-Icons
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+    oh-my-posh init pwsh --config $omp_config | Invoke-Expression
+}
 Import-Module -Name Terminal-Icons -ErrorAction SilentlyContinue
 
-function GoCodeFunc {
-    Set-Location -Path (Join-Path $HOME "Desktop/code")
+# --- Funciones de Navegación ---
+
+# Crear y entrar a carpeta
+function take { 
+    param($p) 
+    New-Item -ItemType Directory -Path $p -Force | Out-Null
+    Set-Location $p 
 }
 
-Set-Alias -Name gocode -Value GoCodeFunc
+# Accesos directos (Simplificados)
+function gocode { Set-Location "$HOME\Desktop\code" }
+function gokais { Set-Location "$HOME\Desktop\code\kais" }
 
-function GoKaisFunc {
-    Set-Location -Path (Join-Path $HOME "Desktop/code/kais")
-}
-
-Set-Alias -Name gokais -Value GoKaisFunc
+# --- Aliases ---
+Set-Alias -Name mkcd -Value take

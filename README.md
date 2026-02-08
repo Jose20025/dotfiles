@@ -1,43 +1,66 @@
-# Configuración de PowerShell personalizada
+# Configuracion de PowerShell personalizada
 
-Este repositorio contiene una configuración personalizada para PowerShell, incluyendo temas para [oh-my-posh](https://ohmyposh.dev/) y algunos alias útiles.
+Este repositorio contiene mis dotfiles de PowerShell con una configuracion orientada a desarrollo, incluyendo `oh-my-posh`, `zoxide`, `PSReadLine` y utilidades de navegacion.
 
-## Uso
+## Scripts disponibles
 
-Para aplicar esta configuración en tu perfil de PowerShell, simplemente agrega una línea en tu archivo de perfil (`$PROFILE`) que haga referencia a este script usando dot-source.
+- `joseca_config.ps1`: perfil para desktop.
+  - `CodeRoot`: `D:\code`
+  - `KaisRoot`: `D:\code\kais`
+- `joseca_config_laptop.ps1`: perfil para laptop.
+  - `CodeRoot`: `Desktop\code`
+  - `KaisRoot`: `Desktop\code\kais`
 
-Por ejemplo, si este archivo está ubicado en `D:\dotfiles\joseca_config.ps1`, añade lo siguiente a tu perfil:
+## Instalacion
+
+1. Abre tu perfil de PowerShell (`$PROFILE`).
+2. Agrega una linea con dot-source al script que quieras usar.
+
+Ejemplo (desktop):
 
 ```powershell
 . D:\dotfiles\joseca_config.ps1
 ```
 
-> **Nota:** El punto al inicio (`.`) es importante, ya que permite que las funciones y configuraciones definidas en el script estén disponibles en tu sesión actual.
-
-## ¿Qué incluye?
-
-- Inicialización de [oh-my-posh](https://ohmyposh.dev/) con el tema definido en [`omp-themes/amro.omp.json`](omp-themes/amro.omp.json).
-- Importación del módulo [Terminal-Icons](https://github.com/devblackops/Terminal-Icons) para mejorar la visualización de archivos y carpetas.
-- Alias rápidos para navegar a carpetas de desarrollo:
-  - `godev` para ir a `D:\dev`
-  - `gokais` para ir a `D:/work/kais`
-
-## Personalización
-
-Si prefieres otro tema, puedes cambiar la línea:
+Ejemplo (laptop):
 
 ```powershell
-$omp_config = Join-Path $script:Root 'omp-themes\amro.omp.json'
+. D:\dotfiles\joseca_config_laptop.ps1
 ```
 
-por
+> Nota: el punto inicial (`.`) es obligatorio para cargar funciones y alias en la sesion actual.
+
+## Que incluye
+
+- Inicializacion de [oh-my-posh](https://ohmyposh.dev/) con el tema [`omp-themes/catppuccin_mocha.omp.json`](omp-themes/catppuccin_mocha.omp.json).
+- Importacion opcional de [Terminal-Icons](https://github.com/devblackops/Terminal-Icons).
+- Activacion de predicciones de `PSReadLine` (si el modulo esta instalado).
+- Inicializacion de `zoxide` (si esta disponible en `PATH`).
+- Funciones de productividad:
+  - `gocode`: ir a `CodeRoot`.
+  - `gokais`: ir a `KaisRoot`.
+  - `take <ruta>`: crear carpeta (si no existe) y entrar.
+  - `explore`: abrir la carpeta actual en el explorador.
+  - `ports`: listar puertos en escucha con el proceso asociado.
+  - `Update-Profile`: recargar el perfil actual.
+- Alias:
+  - `mkcd` -> `take`
+  - `reload` -> `Update-Profile`
+
+## Personalizacion
+
+Si quieres cambiar el tema de `oh-my-posh`, edita en el script elegido la variable `$script:OhMyPoshConfig`.
+
+Por ejemplo:
 
 ```powershell
-$omp_config = Join-Path $script:Root 'omp-themes\pure.omp.json'
+$script:OhMyPoshConfig = Join-Path $script:ScriptRoot 'omp-themes\pure.omp.json'
 ```
 
-y reiniciar tu terminal.
+Temas disponibles en este repo:
 
----
+- `omp-themes/catppuccin_mocha.omp.json`
+- `omp-themes/amro.omp.json`
+- `omp-themes/pure.omp.json`
 
-¡Disfruta tu terminal personalizada!
+Luego recarga la sesion con `reload` o abre una terminal nueva.

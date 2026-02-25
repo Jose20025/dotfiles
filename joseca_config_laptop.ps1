@@ -139,5 +139,5 @@ Set-Alias -Name reload -Value Update-Profile -Option AllScope
 
 Import-OptionalModule -Name 'Terminal-Icons'
 Initialize-PsReadLine
-Initialize-Zoxide
 Initialize-OhMyPosh
+Initialize-Zoxide

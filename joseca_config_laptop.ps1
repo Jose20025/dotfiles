@@ -141,3 +141,5 @@ Import-OptionalModule -Name 'Terminal-Icons'
 Initialize-PsReadLine
 Initialize-OhMyPosh
 Initialize-Zoxide
+
+Set-StrictMode -Off

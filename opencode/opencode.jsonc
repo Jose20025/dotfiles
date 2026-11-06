@@ -1,0 +1,31 @@
+{
+    "default_agent": "senior-twice",
+    "mcp": {
+        "engram": {
+            "command": [
+                "C:\\Users\\josec\\go\\bin\\engram.exe",
+                "mcp",
+                "--tools=agent"
+            ],
+            "enabled": true,
+            "type": "local"
+        },
+        "context7": {
+            "type": "remote",
+            "url": "https://mcp.context7.com/mcp",
+            "enabled": true,
+            "headers": {
+                "Authorization": "Bearer <YOUR_CONTEXT7_API_KEY>"
+            }
+        },
+        "codegraph": {
+            "type": "local",
+            "enabled": true,
+            "command": [
+                "codegraph",
+                "serve",
+                "--mcp"
+            ]
+        }
+    }
+}

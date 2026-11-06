@@ -1,6 +1,13 @@
 # Configuracion de PowerShell personalizada
 
-Este repositorio contiene mis dotfiles de PowerShell con una configuracion orientada a desarrollo, incluyendo `oh-my-posh`, `zoxide`, `PSReadLine` y utilidades de navegacion.
+Este repositorio contiene mis dotfiles de PowerShell y la configuracion de OpenCode para desarrollo, incluyendo `oh-my-posh`, `zoxide`, `PSReadLine`, utilidades de navegacion y un agente con reglas de trabajo personalizadas.
+
+## Estructura
+
+- `joseca_config.ps1`: perfil de PowerShell para desktop.
+- `joseca_config_laptop.ps1`: perfil de PowerShell para laptop.
+- `omp-themes/`: temas personalizados de `oh-my-posh`.
+- `opencode/`: configuracion, instrucciones y agentes de OpenCode.
 
 ## Scripts disponibles
 
@@ -64,3 +71,18 @@ Temas disponibles en este repo:
 - `omp-themes/pure.omp.json`
 
 Luego recarga la sesion con `reload` o abre una terminal nueva.
+
+## Configuracion de OpenCode
+
+La configuracion se encuentra en [`opencode/opencode.jsonc`](opencode/opencode.jsonc) e incluye:
+
+- `senior-twice` como agente predeterminado.
+- [`opencode/AGENTS.md`](opencode/AGENTS.md) con reglas para usar Context7, Engram, CodeGraph y OpenSpec.
+- [`opencode/agents/senior-twice.md`](opencode/agents/senior-twice.md) con el perfil, flujo de trabajo y estilo de comunicacion del agente.
+- MCP local de `engram` para memoria persistente.
+- MCP remoto de `context7` para consultar documentacion actualizada.
+- MCP local de `codegraph` para explorar simbolos y relaciones del codigo.
+
+Para usar esta configuracion, inicia OpenCode apuntando a este repositorio o copia la carpeta `opencode/` a la ubicacion de configuracion que utilice tu instalacion. El MCP de `engram` requiere que `engram.exe` este instalado en `C:\Users\<usuario>\go\bin\engram.exe`, y `codegraph` debe estar disponible en `PATH`.
+
+Si utilizas Context7, configura su credencial en [`opencode/opencode.jsonc`](opencode/opencode.jsonc) usando el mecanismo de secretos de tu entorno; no guardes tokens reales en el repositorio.

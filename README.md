@@ -1,6 +1,6 @@
-# Configuracion de PowerShell personalizada
+# Dotfiles de Windows
 
-Este repositorio contiene mis dotfiles de PowerShell y la configuracion de OpenCode para desarrollo, incluyendo `oh-my-posh`, `zoxide`, `PSReadLine`, utilidades de navegacion y un agente con reglas de trabajo personalizadas.
+Este repositorio contiene mis dotfiles de PowerShell, la configuracion de OpenCode para desarrollo y mi barra de YASB, incluyendo `oh-my-posh`, `zoxide`, `PSReadLine`, utilidades de navegacion y un agente con reglas de trabajo personalizadas.
 
 ## Estructura
 
@@ -8,6 +8,7 @@ Este repositorio contiene mis dotfiles de PowerShell y la configuracion de OpenC
 - `joseca_config_laptop.ps1`: perfil de PowerShell para laptop.
 - `omp-themes/`: temas personalizados de `oh-my-posh`.
 - `opencode/`: configuracion, instrucciones y agentes de OpenCode.
+- `yasb/`: configuracion y estilos de la barra de YASB.
 
 ## Scripts disponibles
 
@@ -86,3 +87,36 @@ La configuracion se encuentra en [`opencode/opencode.jsonc`](opencode/opencode.j
 Para usar esta configuracion, inicia OpenCode apuntando a este repositorio o copia la carpeta `opencode/` a la ubicacion de configuracion que utilice tu instalacion. El MCP de `engram` requiere que `engram.exe` este instalado en `C:\Users\<usuario>\go\bin\engram.exe`, y `codegraph` debe estar disponible en `PATH`.
 
 Si utilizas Context7, configura su credencial en [`opencode/opencode.jsonc`](opencode/opencode.jsonc) usando el mecanismo de secretos de tu entorno; no guardes tokens reales en el repositorio.
+
+## Configuracion de YASB
+
+- [`yasb/config.yaml`](yasb/config.yaml): widgets y comportamiento de la barra.
+- [`yasb/styles.css`](yasb/styles.css): apariencia de la barra y sus menus.
+
+### Restauracion
+
+1. Instala [YASB](https://github.com/amnweb/yasb) y la fuente **JetBrainsMono Nerd Font Propo** para los iconos. Los estilos tambien utilizan las fuentes de Windows Segoe UI y Segoe Fluent Icons.
+2. Cierra YASB y haz una copia de seguridad de tu configuracion actual, si existe.
+3. Desde la raiz de este repositorio, ejecuta:
+
+```powershell
+$yasbConfigDir = Join-Path $HOME '.config\yasb'
+if ($env:YASB_CONFIG_HOME) {
+    $yasbConfigDir = $env:YASB_CONFIG_HOME
+}
+New-Item -ItemType Directory -Path $yasbConfigDir -Force | Out-Null
+Copy-Item -LiteralPath '.\yasb\config.yaml', '.\yasb\styles.css' -Destination $yasbConfigDir -Force
+```
+
+4. Inicia YASB de nuevo.
+
+La ubicacion predeterminada es `%USERPROFILE%\.config\yasb`; `YASB_CONFIG_HOME` permite usar otra carpeta. El comando de restauracion sobrescribe `config.yaml` y `styles.css` en el destino: guarda tu copia de seguridad antes de ejecutarlo.
+
+### Archivos generados y ajustes locales
+
+- `yasb_colors.css` es generado por YASB y lo importa `styles.css`. La configuracion mantiene `system_colors: true`; no se versiona la paleta generada del equipo.
+- Los logs (`*.log` y `*.log.*`) tampoco se versionan. Las exclusiones estan en [`yasb/.gitignore`](yasb/.gitignore).
+- El widget `wallpapers` esta desactivado en la lista de widgets de la barra, pero conserva la ruta local `D:\OneDrive\Pictures\Wallpapers\Themes\Monochrome` en `image_path`. Ajustala antes de activar ese widget en otro equipo.
+- Los widgets de Komorebi estan desactivados en la barra; solo requieren Komorebi si decides activarlos.
+
+Los archivos de `yasb/` son una copia, no un enlace a la configuracion instalada. Si personalizas la barra desde su carpeta local, copia de nuevo `config.yaml` y `styles.css` al repositorio para guardar esos cambios.

@@ -3,8 +3,8 @@
 /* Root Variables */
 :root {
 
-    --icons-font: "GeistMono Nerd Font Mono";
-    --icons-font-fallback: "GeistMono Nerd Font Mono";
+    --icons-font: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
+    --icons-font-fallback: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
     --system-font: "Segoe UI Variable", "Segoe UI";
     --specialFont: "Segoe UI Variable", "Segoe UI";
     --border-radius: 16;
@@ -920,7 +920,7 @@
     font-size: 13px;
     font-weight: var(--fontWeight);
     margin-left: 8px;
-    font-family: "GeistMono Nerd Font Mono";
+    font-family: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
     color: var(--text);
 }
 .media-menu .artist {
@@ -935,7 +935,7 @@
     background-color: var(--background2);
     padding: 2px 5px;
     font-weight: var(--fontWeight);
-    font-family: "GeistMono Nerd Font Mono";
+    font-family: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
     margin-top: 8px;
 }
 /* The source class name is the same as what you see in the media widget; just replace spaces with dashes and convert it to lowercase. 
@@ -1048,7 +1048,7 @@ Example: "Windows Media" becomes "windows-media" */
 
 .media-menu .playback-time {
     font-size: 11px;
-    font-family: "GeistMono Nerd Font Mono";
+    font-family: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
     color: var(--subtext);
     margin-top: 14px;
     min-width: 100px;
@@ -1787,7 +1787,7 @@ which is 16 pixels same as the other sections. */
 
 .yasb-bar .widget .label {
     color: var(--text);
-    font-family: "GeistMono Nerd Font Mono";
+    font-family: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
     font-size: 11px;
     font-weight: 500;
     padding-bottom: 0;

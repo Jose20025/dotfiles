@@ -96,7 +96,7 @@ Si utilizas Context7, configura su credencial en [`opencode/opencode.jsonc`](ope
 
 ### Restauracion
 
-1. Instala [YASB](https://github.com/amnweb/yasb) y **GeistMono Nerd Font Mono** para los iconos y el texto monoespaciado. Los estilos tambien utilizan las fuentes de Windows Segoe UI y Segoe Fluent Icons.
+1. Instala [YASB](https://github.com/amnweb/yasb). El script instala **JetBrainsMono Nerd Font Propo** para tu usuario si no esta disponible. Los estilos tambien utilizan las fuentes de Windows Segoe UI y Segoe Fluent Icons.
 2. Clona este repositorio si aun no esta en la computadora:
 
 ```powershell
@@ -111,7 +111,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\yasb\setup-yasb.ps1
 
 4. Inicia YASB de nuevo.
 
-El script copia `config.yaml` y `styles.css` a `%USERPROFILE%\.config\yasb` y, si ya existen, los respalda en una carpeta hermana con sufijo `.backup-fecha-hora`. Si `YASB_CONFIG_HOME` esta definido, usa esa ubicacion en su lugar. No instala YASB ni la fuente; asume que ambos ya estan instalados.
+El script descarga el paquete oficial de JetBrainsMono del ultimo release de Nerd Fonts e instala solo las variantes Propo si la familia no esta instalada. Requiere Internet en ese caso, registra las fuentes en tu usuario y no necesita permisos de administrador. Si las aplicaciones no reconocen la fuente inmediatamente, cierralas y vuelve a abrirlas; si persiste, cierra sesion en Windows y vuelve a entrar.
+
+Despues copia `config.yaml` y `styles.css` a `%USERPROFILE%\.config\yasb` y, si ya existen, los respalda en una carpeta hermana con sufijo `.backup-fecha-hora`. Si `YASB_CONFIG_HOME` esta definido, usa esa ubicacion en su lugar. No instala YASB; asume que ya esta instalado.
 
 ### Archivos generados y ajustes locales
 

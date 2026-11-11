@@ -95,7 +95,7 @@ Si utilizas Context7, configura su credencial en [`opencode/opencode.jsonc`](ope
 
 ### Restauracion
 
-1. Instala [YASB](https://github.com/amnweb/yasb) y la fuente **JetBrainsMono Nerd Font Propo** para los iconos. Los estilos tambien utilizan las fuentes de Windows Segoe UI y Segoe Fluent Icons.
+1. Instala [YASB](https://github.com/amnweb/yasb) y **GeistMono Nerd Font Mono** para los iconos y el texto monoespaciado. Los estilos tambien utilizan las fuentes de Windows Segoe UI y Segoe Fluent Icons.
 2. Cierra YASB y haz una copia de seguridad de tu configuracion actual, si existe.
 3. Desde la raiz de este repositorio, ejecuta:
 

@@ -9,6 +9,7 @@ Este repositorio contiene mis dotfiles de PowerShell, la configuracion de OpenCo
 - `omp-themes/`: temas personalizados de `oh-my-posh`.
 - `opencode/`: configuracion, instrucciones y agentes de OpenCode.
 - `yasb/`: configuracion y estilos de la barra de YASB.
+  - `yasb/setup-yasb.ps1`: aplica la configuracion en Windows y respalda la anterior.
 
 ## Scripts disponibles
 
@@ -96,21 +97,21 @@ Si utilizas Context7, configura su credencial en [`opencode/opencode.jsonc`](ope
 ### Restauracion
 
 1. Instala [YASB](https://github.com/amnweb/yasb) y **GeistMono Nerd Font Mono** para los iconos y el texto monoespaciado. Los estilos tambien utilizan las fuentes de Windows Segoe UI y Segoe Fluent Icons.
-2. Cierra YASB y haz una copia de seguridad de tu configuracion actual, si existe.
-3. Desde la raiz de este repositorio, ejecuta:
+2. Clona este repositorio si aun no esta en la computadora:
 
 ```powershell
-$yasbConfigDir = Join-Path $HOME '.config\yasb'
-if ($env:YASB_CONFIG_HOME) {
-    $yasbConfigDir = $env:YASB_CONFIG_HOME
-}
-New-Item -ItemType Directory -Path $yasbConfigDir -Force | Out-Null
-Copy-Item -LiteralPath '.\yasb\config.yaml', '.\yasb\styles.css' -Destination $yasbConfigDir -Force
+git clone https://github.com/Jose20025/dotfiles.git "$HOME\dotfiles"
+```
+
+3. Cierra YASB y ejecuta el script desde la raiz del repositorio. El bypass solo aplica a ese proceso de PowerShell y no cambia la politica permanente:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\yasb\setup-yasb.ps1
 ```
 
 4. Inicia YASB de nuevo.
 
-La ubicacion predeterminada es `%USERPROFILE%\.config\yasb`; `YASB_CONFIG_HOME` permite usar otra carpeta. El comando de restauracion sobrescribe `config.yaml` y `styles.css` en el destino: guarda tu copia de seguridad antes de ejecutarlo.
+El script copia `config.yaml` y `styles.css` a `%USERPROFILE%\.config\yasb` y, si ya existen, los respalda en una carpeta hermana con sufijo `.backup-fecha-hora`. Si `YASB_CONFIG_HOME` esta definido, usa esa ubicacion en su lugar. No instala YASB ni la fuente; asume que ambos ya estan instalados.
 
 ### Archivos generados y ajustes locales
 
